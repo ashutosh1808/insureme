@@ -1,0 +1,82 @@
+<html>
+<head>
+<title> Check BMI | InsureME </title>
+</head>
+<style>
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin:15px 30px;
+    font-size:18px;
+    padding:10px;
+    background-color:rgb(52, 235, 177);
+}
+.container{
+    background-color: #f2f2f2;
+    padding:5px 20px 15px 20px;
+    border:1px solid lightgray;
+    border-radius: 4px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select,
+textarea{
+    background-color: white;
+    width:100%;
+    padding:8px;
+    border:1px solid lightgrey; 
+    border-radius:5px;
+}
+fieldset{
+    background-color: #fff;
+    border:1px solid #ccc;
+}
+
+.main_heading{
+    text-align:center;
+}
+
+input[type="submit"]{
+    background-color:rgb(206, 219, 202);
+    color:black;
+        font-family:Tahoma;
+    font-size:17px;
+    padding:12px 20px;
+    border:none;
+    cursor:pointer;
+    border-radius:5px;
+    width:100%;
+}
+
+input[type="submit"]:hover{
+    background-color:rgb(212, 224, 209);
+}
+</style>
+<body>
+<h1 class="main_heading">Check your BMI</h1>
+<div class="container">
+<form action="bmi" method="post">
+<label for="height">What's your height?</label>
+<input type="number" step="any" min="0.10" placeholder="enter height (in m)" id="height" name="ht" required>
+<br><br>
+<label for="weight">What's your weight</label>
+<input type="number" step="any" min="20" placeholder="enter weight (in kg)" name="wt" required>
+<br><br>
+<input type="submit" value="Compute">
+</form>
+</div>
+<br>
+<center>
+{{msg}}
+<br>
+<a href="{{url_for('predict')}}">Back to Predict</a>
+</center>
+</body>
+</html>
