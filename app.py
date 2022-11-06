@@ -63,6 +63,9 @@ def signup():
 				cursor.execute(sql%(username,pw3))
 				con.commit()
 				return redirect(url_for('login'))
+			except IntegrityError:
+			    con.rollback()
+			    return render_template("signup.html",msg="User already exists")
 			except Exception as e:
 				con.rollback()
 				return render_template("signup.html",msg=e)
