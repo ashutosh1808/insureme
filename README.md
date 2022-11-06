@@ -19,6 +19,8 @@ To deploy this project run
 
 **Server:** Flask, PythonAnywhere
 
+**Storage:** sqlite3
+
 
 
 
