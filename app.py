@@ -2,6 +2,7 @@ from flask import Flask,render_template,request,redirect,url_for,session
 import pickle
 from sqlite3 import *
 import hashlib
+from forex_python.converter import CurrencyRates
 #hashlib for encryption
 app=Flask(__name__)
 app.secret_key="insuremerocks"
@@ -96,7 +97,9 @@ def predict():
 			model=pickle.load(f)
 		data=[[age,bmi,ch,db,bp,cd,ka,ms,sx,smk]]
 		res=model.predict(data)
-		cost=round(res[0],0)
+		c=CurrencyRates()
+		res_in_inr=c.convert("USD","INR",res)
+		cost=round(res_in_inr[0],0)
 		con=None
 		try:
 			con=connect("insurance.db")
